@@ -35,6 +35,5 @@ func main() {
 
 func Handler(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) { // APIGW(REST)
 	//func Handler(ctx context.Context, req events.APIGatewayV2HTTPRequest) (events.APIGatewayV2HTTPResponse, error) { // APIGW(HTTP)
-	log.Printf("path===%v", req)
 	return echoLambda.ProxyWithContext(ctx, req)
 }

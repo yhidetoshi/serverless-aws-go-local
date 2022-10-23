@@ -7,7 +7,7 @@ clean:
 	rm -rf ./bin
 
 deploy-local: build
-	@sls offline
+	sls offline
 
 deploy: clean build
 	sls deploy --verbose
