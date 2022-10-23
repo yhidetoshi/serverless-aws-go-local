@@ -1,0 +1,29 @@
+service: serverless-echo-lambda
+frameworkVersion: '3'
+
+# 追記
+custom:
+  serverless-offline:
+    useDocker: true
+
+provider:
+  name: aws
+  runtime: go1.x
+  stage: v1 #追記
+  timeout: 30 #追記
+
+package:
+  patterns:
+    - '!./**'
+    - ./bin/**
+
+functions:
+  main:
+    handler: bin/main
+    events:
+      - http: # RESTAPI
+          path: /api/{proxy+}
+          method: get
+# 追記
+plugins:
+  - serverless-offline
